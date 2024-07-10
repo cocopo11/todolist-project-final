@@ -17,3 +17,11 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    @app.route('/tasks', methods=['GET'])
+    def get_tasks():
+     """
+     팀원 1: 할 일 목록 보기 기능
+     """
+    # 할 일 목록 반환 로직 구현 필요
+    pass
