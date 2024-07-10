@@ -20,8 +20,8 @@ def filter_tasks():
     """
     팀원 2: 할 일 완료/미완료 상태에 따른 정렬 기능
     """
-    # 할 일 필터링 로직 구현 필요
-    pass
+    sorted_tasks = sorted(tasks, key=lambda x: x.completed)
+    return jsonify([task.__dict__ for task in sorted_tasks])
 
 if __name__ == '__main__':
     app.run(debug=True)
