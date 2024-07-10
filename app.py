@@ -23,6 +23,13 @@ def add_task():
 def index():
     return render_template('index.html')
 
+@app.route('/sort_tasks_by_mood', methods=['GET'])
+def sort_tasks_by_mood():
+    """
+    팀원 3: 기분 선택에 따른 투두리스트 정렬 로직 구현
+    """
+    # 기분에 따른 정렬 로직 구현 필요
+
 @app.route('/set_mood', methods=['POST'])
 def set_mood():
     """
