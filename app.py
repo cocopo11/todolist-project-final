@@ -42,6 +42,9 @@ def delete_task(task_id):
     """
     팀원 1: 할 일 삭제 기능
     """
+    global tasks
+    tasks = [task for task in tasks if task.id != task_id]
+    return jsonify({"message": "Task deleted"}), 200
 # 할 일 삭제 로직 구현 필요
     pass
 
@@ -77,6 +80,5 @@ def search():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 
 
