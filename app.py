@@ -54,6 +54,8 @@ def filter_tasks():
     """
     팀원 2: 할 일 완료/미완료 상태에 따른 정렬 기능
     """
+    sorted_tasks = sorted(tasks, key=lambda x: x.completed)
+    return jsonify([task.__dict__ for task in sorted_tasks])
     for task in tasks:
         if task.id == task_id:
             task.completed = not task.completed
