@@ -22,3 +22,5 @@ def get_tasks():
     """
     return jsonify([task.__dict__ for task in tasks])
 
+if __name__ == '__main__':
+    app.run(debug=True)
