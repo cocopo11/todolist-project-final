@@ -21,3 +21,6 @@ def add_task():
     new_task = Task(new_id, data['title'], data['difficulty'])
     tasks.append(new_task)
     return jsonify(new_task.__dict__), 201
+
+if __name__ == '__main__':
+    app.run(debug=True)
