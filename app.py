@@ -1,5 +1,4 @@
-from flask import Flask, request, jsonify, render_template
-
+from flask import Flask, request, jsonify, render_template, session
 
 app = Flask(__name__)
 
@@ -12,9 +11,12 @@ class Task:
 
 tasks = []
 
+current_mood = '평범'  # 기본값
+
 @app.route('/')
 def index():
-    return render_template('index.html', tasks=tasks)
+    sorted_tasks = sort_tasks_by_mood(current_mood)
+    return render_template('index.html', tasks=sorted_tasks, mood=current_mood)
 
 @app.route('/add_task', methods=['POST'])
 def add_task():
@@ -26,8 +28,6 @@ def add_task():
     new_task = Task(new_id, data['title'], data['difficulty'])
     tasks.append(new_task)
     return jsonify(new_task.__dict__), 201
-    # 할 일 추가 로직 구현 필요
-    pass
 
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
@@ -35,8 +35,6 @@ def get_tasks():
     팀원 1: 할 일 목록 보기 기능
     """
     return jsonify([task.__dict__ for task in tasks])
-
-    pass
 
 @app.route('/delete_task/<int:task_id>', methods=['DELETE'])
 def delete_task(task_id):
@@ -46,8 +44,6 @@ def delete_task(task_id):
     global tasks
     tasks = [task for task in tasks if task.id != task_id]
     return jsonify({"message": "Task deleted"}), 200
-    # 할 일 삭제 로직 구현 필요
-    pass
 
 @app.route('/filter_tasks', methods=['GET'])
 def filter_tasks():
@@ -61,10 +57,6 @@ def filter_tasks():
             task.completed = not task.completed
             return jsonify(task.__dict__)
     return jsonify({"message": "Task not found"}), 404
-   
-
-    # 할 일 필터링 로직 구현 필요
-    pass
 
 @app.route('/sort_tasks_by_mood', methods=['GET'])
 def sort_tasks_by_mood():
@@ -78,7 +70,14 @@ def set_mood():
     """
     팀원 3: 오늘의 기분 선택 기능
     """
-    # 오늘의 기분 설정 로직 구현 필요
+    global current_mood
+    data = request.get_json()
+    mood = data.get('mood')
+    if mood in ['좋음', '평범', '나쁨']:
+        current_mood = mood
+        return jsonify({"message": f"Mood set to {mood}"}), 200
+    else:
+        return jsonify({"message": "Invalid mood"}), 400
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -88,7 +87,7 @@ def search():
     # 키워드 검색 로직 구현 필요
     pass
 
-
-
 if __name__ == '__main__':
     app.run(debug=True)
+
+
