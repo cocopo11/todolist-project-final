@@ -58,13 +58,6 @@ def filter_tasks():
             return jsonify(task.__dict__)
     return jsonify({"message": "Task not found"}), 404
 
-@app.route('/sort_tasks_by_mood', methods=['GET'])
-def sort_tasks_by_mood():
-    """
-    팀원 3: 기분 선택에 따른 투두리스트 정렬 로직 구현
-    """
-    # 기분에 따른 정렬 로직 구현 필요
-
 @app.route('/set_mood', methods=['POST'])
 def set_mood():
     """
@@ -78,6 +71,15 @@ def set_mood():
         return jsonify({"message": f"Mood set to {mood}"}), 200
     else:
         return jsonify({"message": "Invalid mood"}), 400
+
+def sort_tasks_by_mood(mood):
+    if mood == '좋음':
+        return sorted(tasks, key=lambda task: {'hard': 0, 'medium': 1, 'easy': 2}[task.difficulty])
+    elif mood == '나쁨':
+        return sorted(tasks, key=lambda task: {'easy': 0, 'medium': 1, 'hard': 2}[task.difficulty])
+    else:  # '평범'
+        return sorted(tasks, key=lambda task: {'medium': 0, 'hard': 1, 'easy': 2}[task.difficulty])
+
 
 @app.route('/search', methods=['GET'])
 def search():
