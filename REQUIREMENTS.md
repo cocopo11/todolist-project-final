@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # REQUIREMENTS.md
 
 ### Related works
@@ -7,7 +6,7 @@
 
 ### Proposals
 - **최종 제안**: 사용자가 '좋음', '평범', '나쁨' 중 하나를 선택하면, 해당 기분에 맞게 할 일이 정렬되어 표시되는 기능을 추가합니다.
-=======
+
 
 **할 일 추가**
   - 링크: [React 간단한 투두리스트 만들기](https://velog.io/@soonmac/React-%EA%B0%84%EB%8B%A8%ED%95%9C-%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0)
@@ -30,4 +29,4 @@ In the related tasks, there is no modification functionality at all, so we are a
 
 **proposals**
  In the related tasks, there is no modification functionality at all, so we are adding the modification functionality. And we are implementing the feature to search or filter the tasks. If there is time left afterwards, we will also add new features.
->>>>>>> upstream/main
+

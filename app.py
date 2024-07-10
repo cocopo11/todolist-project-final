@@ -41,6 +41,14 @@ def filter_tasks():
 if __name__ == '__main__':
     app.run(debug=True)
 
+    @app.route('/tasks', methods=['GET'])
+    def get_tasks():
+     """
+     팀원 1: 할 일 목록 보기 기능
+     """
+    # 할 일 목록 반환 로직 구현 필요
+    pass
+  
     @app.route('/delete_task/<int:task_id>', methods=['DELETE'])
     def delete_task(task_id):
       """
@@ -48,5 +56,4 @@ if __name__ == '__main__':
       """
     # 할 일 삭제 로직 구현 필요
       pass
-
 
