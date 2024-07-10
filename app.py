@@ -21,6 +21,11 @@ def add_task():
     """
     팀원 1: 할 일 추가 기능
     """
+    data = request.get_json()
+    new_id = len(tasks) + 1
+    new_task = Task(new_id, data['title'], data['difficulty'])
+    tasks.append(new_task)
+    return jsonify(new_task.__dict__), 201
     # 할 일 추가 로직 구현 필요
     pass
 
@@ -72,5 +77,6 @@ def search():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
