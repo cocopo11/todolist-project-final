@@ -15,6 +15,13 @@ tasks = []
 def index():
     return render_template('index.html')
 
+@app.route('/set_mood', methods=['POST'])
+def set_mood():
+    """
+    팀원 3: 오늘의 기분 선택 기능
+    """
+    # 오늘의 기분 설정 로직 구현 필요
+    
 @app.route('/filter_tasks', methods=['GET'])
 def filter_tasks():
     """
