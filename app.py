@@ -34,8 +34,9 @@ def get_tasks():
     """
     팀원 1: 할 일 목록 보기 기능
     """
-# 할 일 목록 반환 로직 구현 필요
-pass
+    return jsonify([task.__dict__ for task in tasks])
+
+    pass
 
 @app.route('/delete_task/<int:task_id>', methods=['DELETE'])
 def delete_task(task_id):
@@ -45,7 +46,7 @@ def delete_task(task_id):
     global tasks
     tasks = [task for task in tasks if task.id != task_id]
     return jsonify({"message": "Task deleted"}), 200
-# 할 일 삭제 로직 구현 필요
+    # 할 일 삭제 로직 구현 필요
     pass
 
 @app.route('/filter_tasks', methods=['GET'])
@@ -78,7 +79,7 @@ def search():
     # 키워드 검색 로직 구현 필요
     pass
 
+
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-
