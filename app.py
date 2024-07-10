@@ -17,27 +17,12 @@ def index():
 
 @app.route('/search', methods=['GET'])
 def search():
-    keyword = request.args.get('keyword', '').strip()
-    if keyword:
-        filtered_tasks = [task for task in tasks if keyword in task.title]
-    else:
-        filtered_tasks = tasks
-
-    return render_template('index.html', tasks=filtered_tasks, keyword=keyword)
+    '''
+    팀원 4: 키워드 검색 기능
+    '''
+    # 키워드 검색 로직 구현 필요
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
 
-'''
-<!-- index.html 파일에 아래 추가 -->
-<form action="/search" method="GET">
-    <input type="text" name="keyword" placeholder="검색어 입력">
-    <button type="submit">검색</button>
-</form>
-
-<ul>
-    {% for task in tasks %}
-    <li>{{ task.title }} - {{ task.difficulty }}</li>
-    {% endfor %}
-</ul>
-'''
