@@ -11,6 +11,14 @@ class Task:
 
 tasks = []
 
+@app.route('/add_task', methods=['POST'])
+def add_task():
+    """
+    팀원 1: 할 일 추가 기능
+    """
+    # 할 일 추가 로직 구현 필요
+    pass
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -40,4 +48,5 @@ if __name__ == '__main__':
       """
     # 할 일 삭제 로직 구현 필요
       pass
+
 
