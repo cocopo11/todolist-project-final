@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, render_template, session
 
-
 app = Flask(__name__)
 
 class Task:
@@ -24,32 +23,40 @@ def add_task():
     """
     팀원 1: 할 일 추가 기능
     """
-    # 할 일 추가 로직 구현 필요
-    pass
+    data = request.get_json()
+    new_id = len(tasks) + 1
+    new_task = Task(new_id, data['title'], data['difficulty'])
+    tasks.append(new_task)
+    return jsonify(new_task.__dict__), 201
 
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
     """
     팀원 1: 할 일 목록 보기 기능
     """
-# 할 일 목록 반환 로직 구현 필요
-pass
+    return jsonify([task.__dict__ for task in tasks])
 
 @app.route('/delete_task/<int:task_id>', methods=['DELETE'])
 def delete_task(task_id):
     """
     팀원 1: 할 일 삭제 기능
     """
-# 할 일 삭제 로직 구현 필요
-    pass
+    global tasks
+    tasks = [task for task in tasks if task.id != task_id]
+    return jsonify({"message": "Task deleted"}), 200
 
 @app.route('/filter_tasks', methods=['GET'])
 def filter_tasks():
     """
     팀원 2: 할 일 완료/미완료 상태에 따른 정렬 기능
     """
-    # 할 일 필터링 로직 구현 필요
-    pass
+    sorted_tasks = sorted(tasks, key=lambda x: x.completed)
+    return jsonify([task.__dict__ for task in sorted_tasks])
+    for task in tasks:
+        if task.id == task_id:
+            task.completed = not task.completed
+            return jsonify(task.__dict__)
+    return jsonify({"message": "Task not found"}), 404
 
 @app.route('/sort_tasks_by_mood', methods=['GET'])
 def sort_tasks_by_mood():

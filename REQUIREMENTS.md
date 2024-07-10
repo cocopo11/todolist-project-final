@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # REQUIREMENTS.md
 
 ### Related works
@@ -7,7 +6,7 @@
 
 ### Proposals
 - **최종 제안**: 사용자가 '좋음', '평범', '나쁨' 중 하나를 선택하면, 해당 기분에 맞게 할 일이 정렬되어 표시되는 기능을 추가합니다.
-=======
+
 
 **할 일 추가**
   - 링크: [React 간단한 투두리스트 만들기](https://velog.io/@soonmac/React-%EA%B0%84%EB%8B%A8%ED%95%9C-%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0)
@@ -30,4 +29,12 @@ In the related tasks, there is no modification functionality at all, so we are a
 
 **proposals**
  In the related tasks, there is no modification functionality at all, so we are adding the modification functionality. And we are implementing the feature to search or filter the tasks. If there is time left afterwards, we will also add new features.
->>>>>>> upstream/main
+
+## 관련 작업
+   **Notion**
+   - **링크**: [Notion] (https://www.notion.so/ko-kr/templates/category/to-do-lists)
+   - **요약**: Notion은 단순히 할 일 목록을 관리하는 것 이상의 통합 작업 공간을 제공하는 도구로, 개인 일정부터 팀 프로젝트, 회사의 업무 프로세스까지 포괄적으로 관리할 수 있습니다. 또한, 다양한 플랫폼에서 동일한 환경을 제공하므로, 언제 어디서든 일정 관리가 가능합니다. 개인 사용자는 무료로 이용할 수 있으며 다양한 기능이 장점이지만, 사용자나 프로젝트에 따라서는 기능이 과도하게 복잡하고, 학습에 시간이 다소 필요할 수 있습니다. 다양한 유저 템플릿이 제공되는 것도 노션의 특징 중 하나입니다.
+
+## Propoasls
+- **할 일 검색 기능**:
+  - 사용자가 검색하고 싶은 단어를 키워드로 사용하여 목록에서 할 일을 검색할 수 있는 기능을 구현할 계획입니다.
