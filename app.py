@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -14,6 +14,14 @@ tasks = []
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/filter_tasks', methods=['GET'])
+def filter_tasks():
+    """
+    팀원 2: 할 일 완료/미완료 상태에 따른 정렬 기능
+    """
+    # 할 일 필터링 로직 구현 필요
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
