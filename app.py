@@ -32,3 +32,12 @@ def filter_tasks():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    @app.route('/delete_task/<int:task_id>', methods=['DELETE'])
+    def delete_task(task_id):
+      """
+      팀원 1: 할 일 삭제 기능
+      """
+    # 할 일 삭제 로직 구현 필요
+      pass
+
