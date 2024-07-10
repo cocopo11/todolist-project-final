@@ -13,15 +13,12 @@ tasks = []
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', tasks=tasks)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/tasks', methods=['GET'])
+def get_tasks():
+    """
+    팀원 1: 할 일 목록 보기 기능
+    """
+    return jsonify([task.__dict__ for task in tasks])
 
-    @app.route('/tasks', methods=['GET'])
-    def get_tasks():
-     """
-     팀원 1: 할 일 목록 보기 기능
-     """
-    # 할 일 목록 반환 로직 구현 필요
-    pass
