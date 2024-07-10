@@ -72,7 +72,6 @@ def set_mood():
     else:
         return jsonify({"message": "Invalid mood"}), 400
 
-    
 def sort_tasks_by_mood(mood):
     if mood == '좋음':
         return sorted(tasks, key=lambda task: {'hard': 0, 'medium': 1, 'easy': 2}[task.difficulty])
@@ -80,7 +79,6 @@ def sort_tasks_by_mood(mood):
         return sorted(tasks, key=lambda task: {'easy': 0, 'medium': 1, 'hard': 2}[task.difficulty])
     else:  # '평범'
         return sorted(tasks, key=lambda task: {'medium': 0, 'hard': 1, 'easy': 2}[task.difficulty])
-
 
 
 @app.route('/search', methods=['GET'])
