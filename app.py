@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, session
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -52,11 +52,6 @@ def filter_tasks():
     """
     sorted_tasks = sorted(tasks, key=lambda x: x.completed)
     return jsonify([task.__dict__ for task in sorted_tasks])
-    for task in tasks:
-        if task.id == task_id:
-            task.completed = not task.completed
-            return jsonify(task.__dict__)
-    return jsonify({"message": "Task not found"}), 404
 
 @app.route('/set_mood', methods=['POST'])
 def set_mood():
@@ -80,16 +75,15 @@ def sort_tasks_by_mood(mood):
     else:  # '평범'
         return sorted(tasks, key=lambda task: {'medium': 0, 'hard': 1, 'easy': 2}[task.difficulty])
 
-
 @app.route('/search', methods=['GET'])
-def search():
-    '''
+def search_tasks():
+    """
     팀원 4: 키워드 검색 기능
-    '''
-    # 키워드 검색 로직 구현 필요
-    pass
+    """
+    keyword = request.args.get('keyword', '').lower()
+    filtered_tasks = [task for task in tasks if keyword in task.title.lower()]
+    return jsonify([task.__dict__ for task in filtered_tasks]), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 
