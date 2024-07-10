@@ -11,17 +11,14 @@ class Task:
 
 tasks = []
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+@app.route('/delete_task/<int:task_id>', methods=['DELETE'])
+def delete_task(task_id):
+    """
+    팀원 1: 할 일 삭제 기능
+    """
+    global tasks
+    tasks = [task for task in tasks if task.id != task_id]
+    return jsonify({"message": "Task deleted"}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-    @app.route('/delete_task/<int:task_id>', methods=['DELETE'])
-    def delete_task(task_id):
-      """
-      팀원 1: 할 일 삭제 기능
-      """
-    # 할 일 삭제 로직 구현 필요
-      pass
