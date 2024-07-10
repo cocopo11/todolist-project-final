@@ -54,6 +54,13 @@ def filter_tasks():
     """
     팀원 2: 할 일 완료/미완료 상태에 따른 정렬 기능
     """
+    for task in tasks:
+        if task.id == task_id:
+            task.completed = not task.completed
+            return jsonify(task.__dict__)
+    return jsonify({"message": "Task not found"}), 404
+   
+
     # 할 일 필터링 로직 구현 필요
     pass
 
