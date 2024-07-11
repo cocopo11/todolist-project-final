@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, session
 
 app = Flask(__name__)
 
@@ -30,7 +30,8 @@ def add_task():
 # 목록보기
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
-    return jsonify([task.__dict__ for task in tasks])
+    sorted_tasks = sort_tasks_by_mood(current_mood)
+    return jsonify([task.__dict__ for task in sorted_tasks])
 
 # 할 일 삭제
 @app.route('/delete_task/<int:task_id>', methods=['DELETE'])
@@ -45,7 +46,6 @@ def filter_tasks():
     sorted_tasks = sorted(tasks, key=lambda x: x.completed)
     return jsonify([task.__dict__ for task in sorted_tasks])
 
-# 기분 선택
 @app.route('/set_mood', methods=['POST'])
 def set_mood():
     global current_mood
