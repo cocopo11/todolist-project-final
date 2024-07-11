@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, session
 
 app = Flask(__name__)
 
@@ -46,7 +46,6 @@ def filter_tasks():
     sorted_tasks = sorted(tasks, key=lambda x: x.completed)
     return jsonify([task.__dict__ for task in sorted_tasks])
 
-# 기분 선택
 @app.route('/set_mood', methods=['POST'])
 def set_mood():
     global current_mood
