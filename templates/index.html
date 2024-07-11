@@ -3,6 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>TODOLIST</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- 좌측 메뉴 -->
+        <div class="to-do-list">
+            <div class="todoleft">
+                <div class="container-1"></div>
+                <div class="to-do">TO DO!</div>
+                <div class="container-2">
+                    <input type="text" id="search" class="search" placeholder="검색">
+                    <img class="vector" src="{{ url_for('static', filename='vector_x2.svg') }}" onclick="searchTasks()" style="cursor: pointer;" />
+                </div>
+                <div class="menu">
+                    <span class="all" onclick="fetchTasks()">ALL</span>
+                    <div class="progress" onclick="filterTasks('progress')">PROGRESS</div>
+                    <span class="completed" onclick="filterTasks('completed')">COMPLETED</span>
+                </div>
+            </div>
+            <!-- 절취선 같은 거 만들기 -->
+            <div class="tdmd">
+                <div class="today-mood">TODAY MOOD</div>
+                <div class="tdmdlist">
+                    <div class="good" onclick="setMood('좋음')">GOOD! ☺️</div>
+                    <div class="soso" onclick="setMood('평범')">SOSO 😳</div>
+                    <div class="bad" onclick="setMood('나쁨')">BAD 🤮</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 우측 -->
+        <div class="right-container">
+            <div class="group-8">
+                <select id="task-difficulty" class="container">
+                    <option value="" disabled selected>난이도</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <input type="text" id="task-title" class="container" placeholder="오늘 할 일">
+                <button class="group-4" onclick="addTask()">추가</button>
+            </div>
+            <div class="group-9" id="tasks-container">
+                <!-- Task items will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
     <style>
         .completed {
