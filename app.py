@@ -52,6 +52,11 @@ def filter_tasks():
     """
     sorted_tasks = sorted(tasks, key=lambda x: x.completed)
     return jsonify([task.__dict__ for task in sorted_tasks])
+    for task in tasks:
+        if task.id == task_id:
+            task.completed = not task.completed
+            return jsonify(task.__dict__)
+    return jsonify({"message": "Task not found"}), 404
 
 @app.route('/set_mood', methods=['POST'])
 def set_mood():
